@@ -19,3 +19,6 @@ class ActivityViewSet(viewsets.ModelViewSet):
     queryset = Activity.objects.all().order_by('-timestamp')
     serializer_class = ActivitySerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    # ##
+
