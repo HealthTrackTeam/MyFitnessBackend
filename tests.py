@@ -14,3 +14,11 @@ class UserAuthTests(APITestCase):
         self.assertTrue(User.objects.filter(username="john").exists())
 
     #     ddd
+def test_login_user(self):
+    User.objects.create_user(username="john", password="12345")
+    url = reverse('auth_login')
+    data = {"username": "john", "password": "12345"}
+    response = self.client.post(url, data, format='json')
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
+    self.assertIn("access", response.data)
+    self.assertIn("refresh", response.data)
