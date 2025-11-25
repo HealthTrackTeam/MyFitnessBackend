@@ -15,6 +15,7 @@ class RegisterView(generics.CreateAPIView):
     permission_classes = [permissions.AllowAny]
 
 # CRUD FOR ACTIVITIES
+# Update Activity
 class ActivityViewSet(viewsets.ModelViewSet):
     queryset = Activity.objects.all().order_by('-timestamp')
     serializer_class = ActivitySerializer
