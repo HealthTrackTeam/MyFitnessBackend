@@ -22,3 +22,25 @@ def test_login_user(self):
     self.assertEqual(response.status_code, status.HTTP_200_OK)
     self.assertIn("access", response.data)
     self.assertIn("refresh", response.data)
+
+    class ActivityTests(APITestCase):
+
+        def setUp(self):
+            # Create and login user
+            self.user = User.objects.create_user(username="john", password="12345")
+            login_url = reverse('auth_login')
+            login_resp = self.client.post(login_url, {"username": "john", "password": "12345"}, format='json')
+            self.token = login_resp.data['access']
+            self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {self.token}')
+
+        def test_create_activity(self):
+            url = reverse('activity-list')
+            data = {
+                "user": self.user.username,
+                "activity_type": "Workout",
+                "status": "planned"
+            }
+            response = self.client.post(url, data, format='json')
+            self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+            self.assertEqual(Activity.objects.count(), 1)
+            self.assertEqual(Activity.objects.get().activity_type, "Workout")
