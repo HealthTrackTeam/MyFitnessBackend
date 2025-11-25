@@ -2,8 +2,11 @@ from rest_framework.test import APITestCase
 from django.urls import reverse
 from rest_framework import status
 from django.contrib.auth.models import User
-from models import Activity
 
+from api.models import Activity
+
+
+# from .models import Activity
 
 class UserAuthTests(APITestCase):
 

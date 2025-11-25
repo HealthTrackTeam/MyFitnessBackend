@@ -19,7 +19,7 @@ class RegisterSerializer(serializers.ModelSerializer):
             password=validated_data["password"]
         )
         return user
-# View / update activities / delete activities
+
 class ActivitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Activity
