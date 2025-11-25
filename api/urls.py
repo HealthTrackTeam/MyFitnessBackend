@@ -12,7 +12,7 @@ router = DefaultRouter()
 
 urlpatterns = [
     path("auth/register/", RegisterView.as_view(), name="auth_register"),
-    # path("auth/login/", TokenObtainPairView.as_view(), name="auth_login"),
+    path("auth/login/", TokenObtainPairView.as_view(), name="auth_login"),
     # path("auth/refresh/", TokenRefreshView.as_view(), name="auth_refresh"),
     path("", include(router.urls)),
 ]

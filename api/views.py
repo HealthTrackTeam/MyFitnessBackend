@@ -4,7 +4,9 @@ from django.shortcuts import render
 from rest_framework import generics, viewsets, permissions
 from django.contrib.auth.models import User
 from .models import Activity
-from .serializers import RegisterSerializer, ActivitySerializer
+from .serializers import (RegisterSerializer
+# , ActivitySerializer
+                          )
 
 # REGISTER USER
 class RegisterView(generics.CreateAPIView):
