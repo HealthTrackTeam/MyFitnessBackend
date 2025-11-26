@@ -6,7 +6,6 @@ from .views import (RegisterView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 router = DefaultRouter()
-
 router.register("activities", ActivityViewSet, basename="activities")
 #Register Url for Activity Create and Update and Delete
 router.register("activities", ActivityViewSet, basename="activity")
